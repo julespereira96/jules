@@ -1,0 +1,30 @@
+.to-do {
+  background-color: red;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: red;
+
+  .to-do-title {
+    font-size: 20px;
+  }
+
+  input[type="text"] {
+    width: 70%;
+    margin-bottom: 20px;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: white;
+    list-style: none;
+    text-align: left;
+
+    img {
+      max-width: 15px;
+      max-height: 15px;
+    }
+  }
+}
