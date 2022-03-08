@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../To-do/Todo.scss";
 import bin from "../Assets/bin.png";
 
 const Todo = () => {
-  const [inputArray, setinputArray] = useState([]);
+  const [inputArray, setinputArray] = useState(() => {
+
+ //changing the initial state to whats saved in the localstorage.
+
+    const savedTodos = localStorage.getItem("user");
+
+    //if there are todos stored
+
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return [];
+    }
+  });
 
   console.log(inputArray, "inputArrrrrrr");
 
@@ -28,6 +41,13 @@ const Todo = () => {
   };
 
   const [inputValue, setinputValue] = useState([]);
+
+  //should run only when inputArray is changed.
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(inputArray));
+
+    // inputArray added as a depenendecy because we want to update localstorage anytime the state changes.
+  }, [inputArray]);
 
   return (
     <>
